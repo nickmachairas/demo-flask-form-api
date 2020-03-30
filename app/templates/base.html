@@ -1,0 +1,35 @@
+{% extends "bootstrap/base.html" %}
+
+
+{% macro error_field(field) %}
+    {{ field.label }}
+    {% if field.errors %}
+        {{ field(class_="form-control is-invalid") }}
+        <div class="invalid-feedback">
+            {{ field.errors[0] }}
+        </div>
+    {% else %}
+        {{ field(class_="form-control") }}
+    {% endif %}
+{% endmacro %}
+
+
+{% block title %}
+    {{ title }} - Demo App
+{% endblock %}
+
+
+{% block navbar %}
+    <div class="container">
+        <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+            <a class="navbar-brand" href="#">Demo App</a>
+        </nav>
+    </div>
+{% endblock navbar %}
+
+
+{% block content %}
+    <div class="container mt-3">
+        {% block app_content %}{% endblock %}
+    </div>
+{% endblock content %}
